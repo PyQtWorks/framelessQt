@@ -13,10 +13,12 @@
 """
 
 # widgets
+import framelessQt.PYM_FramelessApp as FramelessApp
 import framelessQt.PYM_MenuBarWidget as MenuBarWidget
 import framelessQt.PYM_FooterWidget as FooterWidget
 import framelessQt.PYM_ViewerWidget as ViewerWidget
 import framelessQt.PYM_DragDropWidget as DragDropWidget
 import framelessQt.PYM_SideNavWidget as SideNavWidget
 
-# controls
+# styles
+import framelessQt.PYM_QDarkPalette as QDarkPalette
