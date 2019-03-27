@@ -14,6 +14,7 @@
 
 # widgets
 import framelessQt.PYM_FramelessApp as FramelessApp
+import framelessQt.PYM_MoveableWidget as MoveableWidget
 import framelessQt.PYM_MenuBarWidget as MenuBarWidget
 import framelessQt.PYM_FooterWidget as FooterWidget
 import framelessQt.PYM_ViewerWidget as ViewerWidget

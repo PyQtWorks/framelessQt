@@ -23,6 +23,7 @@ from PySide2 import QtWidgets, QtCore, QtSql, QtGui
 import framelessQt.PYM_QDarkPalette as QDarkPalette
 import framelessQt.PYM_MenuBarWidget as MenuBarWidget
 import framelessQt.PYM_FooterWidget as FooterWidget
+import framelessQt.PYM_MoveableWidget as MoveableWidget
 
 class FramelessApp(QtWidgets.QApplication):
     """
@@ -62,7 +63,7 @@ class FramelessApp(QtWidgets.QApplication):
         self.sharedResources = os.path.abspath(os.path.join(modulePath, "resources"))
         print("Resources path is ", self.sharedResources)
         self.iconPath = os.path.join(self.sharedResources, "icons/close_icon.png")
-        menuBarWidget = MenuBarWidget.MenuBarWidget(mainWidget, title, self.sharedResources, self.iconPath)
+        menuBarWidget = MenuBarWidget.MenuBarWidget(self, title, self.sharedResources, self.iconPath)
 
         showRam = True
         showDisk = False

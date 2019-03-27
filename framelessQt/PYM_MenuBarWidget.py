@@ -22,6 +22,8 @@ from PySide2 import QtWidgets, QtCore, QtSql, QtGui
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 
+import framelessQt.PYM_MoveableWidget as MoveableWidget
+
 Action_Style = ("""
     QPushButton { font-size: 16px; border: 0px; font-family: Source Sans Pro;background-color: transparent;color : #E6E6E6; }
     QPushButton:hover { font-size: 16px; border: 0px; font-family: Source Sans Pro;background-color: transparent;color : #E6E6E6; }
@@ -48,10 +50,9 @@ class QBaseButton(QtWidgets.QPushButton):
         self.setIconSize(QSize(22, 22))
 
 
-class MenuBarWidget(QtWidgets.QWidget):
-    def __init__(self, parent, title, resourcesPath, iconPath):
-        super(MenuBarWidget, self).__init__()
-        self.parent = parent
+class MenuBarWidget(MoveableWidget.MoveableWidget):
+    def __init__(self, app, title, resourcesPath, iconPath):
+        super(MenuBarWidget, self).__init__(app)
         # Set the top layout
         self.menuBarLayout = QtWidgets.QHBoxLayout()
         self.menuBarLayout.setAlignment(Qt.AlignTop)
@@ -78,7 +79,7 @@ class MenuBarWidget(QtWidgets.QWidget):
 
         self.minimizeButton = QBaseButton("minimize", resourcesPath)
         self.closeMinimizeLayout.addWidget(self.minimizeButton)
-        self.minimizeButton.clicked.connect(lambda: self.parent.showMinimized())
+        self.minimizeButton.clicked.connect(lambda: self.app.showMinimized())
 
         self.close_ui = QBaseButton("close", resourcesPath)
         self.closeMinimizeLayout.addWidget(self.close_ui)
@@ -91,7 +92,7 @@ class MenuBarWidget(QtWidgets.QWidget):
         self.mouseLock = False
 
     def cancel(self):
-        self.parent.close()
+        self.app.close()
         '''
         folder = "cache"
         # remove cache folder contents
